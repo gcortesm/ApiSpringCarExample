@@ -12,7 +12,11 @@ public class FotosEntity {
     @Id
     @Column( name ="cod_fotos")
     private Integer codFotos;
+
+    @Column(name = "ruta")
     private String rutas;
+    
+    @Column (name ="cod_mantenimiento")
     private String fkCodMantenimiento;
 
     public Integer getCodFotos() {

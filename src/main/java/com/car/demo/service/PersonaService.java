@@ -22,20 +22,19 @@ public class PersonaService {
     @Autowired
     private PersonaRepositoryStore repoStore;
 
-
-    public List<PersonaEntity> getAll(){
-        return repo.findAll();
+    public List<PersonaEntity> getAll(String tipo){
+        return repo.getAllByTipo(tipo);
     }
     public Optional<PersonaEntity> getById(int id){
         return repo.findById(id);
     }
     
     @Transactional
-    public boolean addPersona(PersonaEntity p){
-        return repoStore.saveProcedure(p);
+    public void addPersona(PersonaEntity p){
+        repoStore.saveProcedure(p);
     }
 
-    public boolean editPersona(PersonaEntity p){
-        return repoStore.editProcedure(p);
+    public void editPersona(PersonaEntity p){
+        repoStore.editProcedure(p);
     }
 }

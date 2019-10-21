@@ -59,14 +59,14 @@ public class PersonaEntity {
     @Id
     @Column (name="cod_persona")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer codCliente;
+    private Integer codPersona;
 
     public Integer getCodCliente() {
-        return this.codCliente;
+        return this.codPersona;
     }
 
     public void setCodCliente(Integer codCliente) {
-        this.codCliente = codCliente;
+        this.codPersona = codCliente;
     }
 
     @Column(name ="tipo_documento")
@@ -189,8 +189,4 @@ public class PersonaEntity {
     public void setEstado(int estado) {
         this.estado = estado;
     }
-    
-
-
-
 }

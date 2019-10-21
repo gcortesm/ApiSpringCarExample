@@ -1,5 +1,7 @@
 package com.car.demo.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,6 +21,17 @@ public class ServiciosMantenimientoEntity {
     private Integer fkCodServicio;
     @Column(name = "fk_cod_mantenimiento")
     private Integer fkCodMantenimiento;
+
+    @Column(name="fecha_smantenimiento")
+    private Date fechaMantenimiento;
+
+    public Date getFechaMantenimiento() {
+        return this.fechaMantenimiento;
+    }
+
+    public void setFechaMantenimiento(Date fechaMantenimiento) {
+        this.fechaMantenimiento = fechaMantenimiento;
+    }
 
     public Integer getCodSMante() {
         return this.codSMante;

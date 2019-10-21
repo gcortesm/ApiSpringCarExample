@@ -18,7 +18,7 @@ public class PersonaRepositoryStore {
     @Autowired
     private EntityManagerFactory emf;
     
-    public boolean saveProcedure(PersonaEntity persona){
+    public void saveProcedure(PersonaEntity persona){
         EntityManager manager=emf.createEntityManager();
         StoredProcedureQuery procedure =manager.createNamedStoredProcedureQuery(PersonaEntity.SAVE_PROCEDURE);
         manager.getTransaction().begin();
@@ -33,12 +33,12 @@ public class PersonaRepositoryStore {
         procedure.setParameter("email",persona.getEmail());
         procedure.setParameter("tipo",persona.getTipo());
         procedure.setParameter("estado",persona.getEstado());
-        boolean flat=procedure.execute();
+        procedure.execute();
         manager.getTransaction().commit();
-        return flat;
+        
     }  
 
-     public boolean editProcedure(PersonaEntity persona){
+     public void editProcedure(PersonaEntity persona){
         EntityManager manager=emf.createEntityManager();
         StoredProcedureQuery procedure =manager.createNamedStoredProcedureQuery(PersonaEntity.SAVE_PROCEDURE);
         manager.getTransaction().begin();
@@ -54,8 +54,7 @@ public class PersonaRepositoryStore {
         procedure.setParameter("tipo",persona.getTipo());
         procedure.setParameter("estado",persona.getEstado());
         procedure.setParameter("cod_persona", persona.getCodCliente());
-        boolean flat=procedure.execute();
+        procedure.execute();
         manager.getTransaction().commit();
-        return flat;
     }  
 }
