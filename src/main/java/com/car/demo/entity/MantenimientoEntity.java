@@ -1,6 +1,5 @@
 package com.car.demo.entity;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -18,31 +17,71 @@ import javax.persistence.Table;
 public class MantenimientoEntity {
 
     @Id
-    @Column(name ="cod_mantenimiento")
+    @Column(name ="codigo")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer codMantenimiento;
+
+    public Integer getCodMantenimiento() {
+        return this.codMantenimiento;
+    }
+
+    public void setCodMantenimiento(Integer codMantenimiento) {
+        this.codMantenimiento = codMantenimiento;
+    }
 
     @Column(name = "estado")
     private String estado;
 
-    @Column(name = "fk_vehiculo")
-    private Integer fkVehiculo;
+    public String getEstado() {
+        return this.estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    @Column(name = "cod_placa")
+    private String fkVehiculo;
+
+    public String getFkVehiculo() {
+        return this.fkVehiculo;
+    }
+
+    public void setFkVehiculo(String fkVehiculo) {
+        this.fkVehiculo = fkVehiculo;
+    }
 
     @Column(name ="fecha")
     private Date fecha;
 
-    @Column (name = "fk_persona_mecanico")
+    public Date getFecha() {
+        return this.fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    @Column (name = "mec_documento")
     private Integer fkPersonaMecanico;
 
-    @Column (name = "limitado")
-    private String limitado;
+    public Integer getFkPersonaMecanico() {
+        return this.fkPersonaMecanico;
+    }
 
-    @Column(name ="limite_mantenimiento")
-    private BigDecimal limiteMantenimiento;
+    public void setFkPersonaMecanico(Integer fkPersonaMecanico) {
+        this.fkPersonaMecanico = fkPersonaMecanico;
+    }
 
-    @Column(name ="valor_mantenimiento")
-    private BigDecimal valorMantenimiento;
+    @Column (name = "mec_tipo_documento")
+    private String tipoDocumento;
 
+    public String getTipoDocumento() {
+        return this.tipoDocumento;
+    }
 
-    
+    public void setTipoDocumento(String tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+ 
 }

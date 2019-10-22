@@ -27,4 +27,11 @@ public class MantenimientoService {
     public MantenimientoEntity edit(MantenimientoEntity mante){
         return repo.save(mante);
     }
+    public void setMecanicoMantenimiento (int identificacion,String tipo,int idMante){
+        repo.setMecanicoMantenimiento(tipo,identificacion,  idMante);
+    }
+
+    public List<MantenimientoEntity> getAllUnAssignment(){
+        return repo.getAllUnAssignment();
+    }
 }

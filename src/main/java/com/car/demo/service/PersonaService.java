@@ -22,11 +22,11 @@ public class PersonaService {
     @Autowired
     private PersonaRepositoryStore repoStore;
 
-    public List<PersonaEntity> getAll(String tipo){
-        return repo.getAllByTipo(tipo);
+    public List<PersonaEntity> getAll(){
+        return repo.findAll();
     }
-    public Optional<PersonaEntity> getById(int id){
-        return repo.findById(id);
+    public Optional<PersonaEntity> getByIds(String  cod,String identificacion){
+        return repo.findByIds(cod,identificacion);
     }
     
     @Transactional
@@ -36,5 +36,9 @@ public class PersonaService {
 
     public void editPersona(PersonaEntity p){
         repoStore.editProcedure(p);
+    }
+
+    public List<PersonaEntity> findTenFirst(){
+        return repo.findTenFirst();
     }
 }

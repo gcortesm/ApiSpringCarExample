@@ -1,10 +1,11 @@
 package com.car.demo.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.NamedStoredProcedureQuery;
 import javax.persistence.ParameterMode;
 import javax.persistence.StoredProcedureParameter;
@@ -24,9 +25,7 @@ import javax.persistence.Table;
         @StoredProcedureParameter(name="celular",type = String.class , mode=ParameterMode.IN),
         @StoredProcedureParameter(name="direccion",type = String.class , mode=ParameterMode.IN),
         @StoredProcedureParameter(name="email",type = String.class , mode=ParameterMode.IN),
-        @StoredProcedureParameter(name="tipo",type = String.class , mode=ParameterMode.IN),
-        @StoredProcedureParameter(name="estado",type = int.class , mode=ParameterMode.IN)
-       // @StoredProcedureParameter(name="tipo",type = String.class , mode=ParameterMode.IN),
+        @StoredProcedureParameter(name="estado",type = String.class , mode=ParameterMode.IN)
     }
 )
 
@@ -43,32 +42,19 @@ import javax.persistence.Table;
         @StoredProcedureParameter(name="celular",type = String.class , mode=ParameterMode.IN),
         @StoredProcedureParameter(name="direccion",type = String.class , mode=ParameterMode.IN),
         @StoredProcedureParameter(name="email",type = String.class , mode=ParameterMode.IN),
-        @StoredProcedureParameter(name="tipo",type = String.class , mode=ParameterMode.IN),
-        @StoredProcedureParameter(name="estado",type = Integer.class , mode=ParameterMode.IN),
-        @StoredProcedureParameter(name="cod_persona",type = Integer.class , mode=ParameterMode.IN),
+        @StoredProcedureParameter(name="estado",type = String.class , mode=ParameterMode.IN),
     }
 )
 
 @Entity
-@Table(name = "PERSONA")
-public class PersonaEntity {
+@Table(name = "MECANICOS")
+@IdClass(PersonaEntity.IdClass.class)
+
+public class PersonaEntity{
     public static final String SAVE_PROCEDURE="ADDPERSONA";
     public static final String EDIT_PROCEDURE="editpersona";
 
-    
     @Id
-    @Column (name="cod_persona")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer codPersona;
-
-    public Integer getCodCliente() {
-        return this.codPersona;
-    }
-
-    public void setCodCliente(Integer codCliente) {
-        this.codPersona = codCliente;
-    }
-
     @Column(name ="tipo_documento")
     private String tipoDocumento;
 
@@ -80,17 +66,25 @@ public class PersonaEntity {
         this.tipoDocumento = tipoDocumento;
     }
 
+    @Id
     @Column(name ="documento")
-    private int documento;
+    private Integer documento;
 
-    public int getDocumento() {
+    public Integer getDocumento() {
         return this.documento;
     }
 
-    public void setDocumento(int documento) {
+    public void setDocumento(Integer documento) {
         this.documento = documento;
     }
     
+    static class IdClass implements Serializable {
+        private String tipoDocumento;
+        private Integer documento;
+    }
+
+
+
     @Column(name ="primer_nombre")
     private String primerNombre;
 
@@ -168,25 +162,14 @@ public class PersonaEntity {
         this.email = email;
     }
 
-    @Column(name ="tipo")
-    private String tipo;
-
-    public String getTipo() {
-        return this.tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     @Column(name ="estado")
-    private Integer estado;
+    private String estado;
 
-    public int getEstado() {
+    public String getEstado() {
         return this.estado;
     }
 
-    public void setEstado(int estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 }

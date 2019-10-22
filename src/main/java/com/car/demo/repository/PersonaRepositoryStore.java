@@ -31,7 +31,6 @@ public class PersonaRepositoryStore {
         procedure.setParameter("celular",persona.getCelular());
         procedure.setParameter("direccion",persona.getDireccion());
         procedure.setParameter("email",persona.getEmail());
-        procedure.setParameter("tipo",persona.getTipo());
         procedure.setParameter("estado",persona.getEstado());
         procedure.execute();
         manager.getTransaction().commit();
@@ -51,9 +50,7 @@ public class PersonaRepositoryStore {
         procedure.setParameter("celular",persona.getCelular());
         procedure.setParameter("direccion",persona.getDireccion());
         procedure.setParameter("email",persona.getEmail());
-        procedure.setParameter("tipo",persona.getTipo());
         procedure.setParameter("estado",persona.getEstado());
-        procedure.setParameter("cod_persona", persona.getCodCliente());
         procedure.execute();
         manager.getTransaction().commit();
     }  
